@@ -1,0 +1,93 @@
+@model SaudiTour.Trip
+
+
+<div class="container" dir="rtl">
+    <div class="row mt-5">
+        <div class="col">
+            <div class="card">
+                <div class="card-header text-white" style="background-color:rgba(238, 238, 226, 0.416);">
+                
+                    <h2 style="color: black;">عملية الدفع</h2>
+
+                    <!-- بيانات الرحلة -->
+                  
+                            <div class="card position-relative custom-card p-3 mb-3" dir="rtl">
+                            
+                              <span class="card-title text-end">@Model.Name</span>
+                           
+                                <div class="d-flex justify-content-between mt-2">
+                                    <small class="text-muted">
+                                        يبدأ من @(Model.StartDate.ToString("yyyy/MM/dd")) ، إلى @(Model.EndDate.ToString("yyyy/MM/dd"))
+                                    </small>
+                                    <strong class="text-dark"> @Model.Price ﷼</strong>
+                                </div>
+                            </div>
+
+                  <div class="card-body">
+                      <form method="post" onsubmit="handleSubmit(event)">
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label">الاسم الاول</label>
+                                <input type="text" class="form-control" >
+                            </div>
+                            <div class="col">
+                                <label class="form-label">الاسم الاخير</label>
+                                <input type="text" class="form-control" >
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label">البريد الإلكتروني</label>
+                                <input type="email" class="form-control" placeholder="name@gmail.com">
+                            </div>
+                            <div class="col">
+                                <label class="form-label">رقم الهاتف</label>
+                                <input type="phone"  class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col">
+                                 <label class="mb-2 d-block" style="color: black;">اختر طريقة الدفع</label>
+                            <div class="payment-options d-flex justify-content-start gap-3">
+                                <label>
+                                    <input type="radio" name="payment" value="apple" required>
+                                    <img src="/Images/apple-pay.png" alt="Apple Pay" width="40" />
+                                </label>
+
+                                <label>
+                                    <input type="radio" name="payment" value="visa">
+                                    <img src="/Images/visa.png" alt="Visa" width="40" />
+                                </label>
+                            </div>
+                             </div>
+                           
+                        </div>
+
+                        <input type="hidden" name="id" value="@Model.Id" />
+
+                        <div class="text-center mt-3">
+                            <button type="submit" class="login-button">تأكيد الحجز</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Popup -->
+<div class="modal" id="successPopup">
+    <div class="modal-content">
+        <p>🎉 شكراً لك! تم الحجز في @Model.Name بنجاح.</p>
+       <a href="/" class="login-button mt-3">العودة إلى الصفحة الرئيسية</a>
+    </div>
+</div>
+
+<script>
+    function handleSubmit(event) {
+        event.preventDefault();
+        document.getElementById("successPopup").style.display = "flex";
+    }
+</script>

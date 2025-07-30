@@ -1,0 +1,371 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 100px;
+  direction: rtl;
+  background-color: #f9f9f9e3;
+ 
+
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+.navbar{
+  background-color: #d2b3b3ca;
+  height: 80px;
+  margin: 20px;
+  border-radius: 16px;
+  padding: 0.5rem;
+
+}
+
+.navbar-brand{
+  font-weight: 500;
+  color: #f8eddd;
+  font-size: 24px;
+  transition: 0.3s color;
+}
+.login-button{
+ background: linear-gradient(to right, #fbb4d8, #A86267); /* وردي إلى بنفسجي */
+  color: rgb(255, 255, 255);
+  padding: 10px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.login-button:hover{
+  background: linear-gradient(to right, #e18cb7, #e4b6dc); /* لون عند التحويم */
+ color: white;
+}
+
+.navbar-toggler{
+  border: none;
+  font-size: 1.25rem;
+}
+
+.navbar-toggler:focus, .btn-close:focus{
+  box-shadow: none;
+  outline: none;
+}
+
+.nav-link{
+  color: #666777 !important;
+  font-weight: 500;
+  position: relative;
+}
+
+.nav-link:hover, .nav-link.active{
+  color: #000 !important;
+}
+
+@media (min-width: 992px){
+  .nav-link::before{
+    content:"";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #f8eddd;
+  visibility: hidden;
+  transition: 0.3s ease-in-out ;
+  }
+}
+  .nav-link:hover:before, .nav-link.active::before{
+    width: 100%;
+    visibility: visible;
+  }
+
+    .carousel-inner img {
+    height: 500px; 
+    object-fit: cover;
+  }
+
+  
+.footer {
+  position: fixed;
+  background-color: #d2b3b3ca;
+  height: 100px;
+  padding: 0.5rem;
+  border-radius: 40px 40px 0 0;
+  z-index: 1030;
+}
+ @media (max-width: 768px) {
+        .trip-img {
+            height: 200px !important;
+        }
+    }
+
+
+.gradient-btn {
+  background: linear-gradient(to right, #fbb4d8, #A86267); /* وردي إلى بنفسجي */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.gradient-btn:hover {
+  background: linear-gradient(to right, #cd6398, #e4b6dc); /* لون عند التحويم */
+  color: white;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+
+
+
+
+.card:hover {
+      box-shadow: 0 8px 20px #8a7b7bca; 
+    }
+
+.card {
+  background-color: rgb(255, 248, 248);
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(143, 143, 143, 0.1); 
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden; 
+  margin: 8px;
+}
+.truncate-2-lines {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; 
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 3em; 
+}
+
+.card-img-top {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 0 0 30px 30px;
+
+}
+
+.card-body {
+  padding: 20px;
+}
+
+
+
+.newsletter-box {
+  background-color: #d2b3b3ca;
+  padding: 40px;
+  border-radius: 30px;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: space-between;
+  direction: rtl;
+  margin-top: 50px;
+  flex-wrap: wrap; 
+ 
+
+}
+
+.newsletter-image {
+  flex: 0 0 120px; 
+  text-align: left;
+}
+
+.newsletter-image img {
+  width: 240px; 
+  border-radius: 15px;
+}
+
+
+.newsletter-content {
+  flex: 1;
+  max-width: 500px;
+  text-align: right;
+}
+
+.newsletter-content h2 {
+  color: #000000;
+  font-weight: bold;
+  margin-bottom: 8px;
+  margin-bottom: 20px;
+}
+
+
+.payment-content {
+  flex: 1;
+  max-width: 500px;
+  text-align: center;
+}
+
+
+.form-group {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.form-group input {
+  flex: 1;
+  padding: 15px;
+  border: none;
+  border-radius: 20px;
+  background: white;
+  font-size: 16px;
+  color: #444;
+
+}
+
+
+
+.custom-list-item {
+  background-color: #ECC5C6;
+  font-size: 14px;
+  padding: 8px 20px;
+  border-radius: 50px;
+  transition: 0.3s background-color;
+  display: inline-block; 
+}
+
+.custom-date {
+ 
+  padding: 8px 20px;
+  margin-right: 9px;
+  border-radius: 50px;
+  transition: 0.3s background-color;
+  display: inline-block; 
+}
+
+
+
+.custom-text {
+  font-family: 'Cairo', sans-serif; 
+  color: #1d3557; 
+  font-size: 16px;
+}
+
+.card-title{
+text-align: right;
+margin: 15px ; 
+color: #5c4b2aff; 
+font-family: 'Cairo', sans-serif;
+font-size: 25px;
+}
+
+.custom-icon-color{
+  color: #614b32;
+}
+
+.custom-border {
+  border-right: 3px solid #614b32ff;
+}
+
+    .payment-option {
+        border: 2px solid #ccc;
+        border-radius: 15px;
+        padding: 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+
+    .payment-option:hover,
+    .payment-option.active {
+        border-color: #007bff;
+        box-shadow: 0 0 15px rgba(0, 123, 255, 0.3);
+        background-color: #f5faff;
+    }
+
+    .payment-icon {
+        font-size: 40px;
+        margin-bottom: 10px;
+        color: #007bff;
+    }
+
+    .payment-text {
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+
+    .modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    align-items: center;
+    justify-content: center;
+    direction: rtl;
+}
+
+.modal-content {
+    background: #fefefe;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    color: #333;
+}
+
+   .form-label {
+        color: black;
+    }
+
+    .form-control {
+        color: black;
+    }

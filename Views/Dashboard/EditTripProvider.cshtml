@@ -1,0 +1,36 @@
+@model TripProvider
+
+@{
+    Layout = "~/Views/Shared/_AdminLayouts.cshtml";
+}
+
+<div class="container" dir="rtl">
+    <div class="row mt-5">
+        <div class="col">
+            <div class="card">
+                <div class="card-header text-white" style="background-color: rgb(151, 92, 135);">
+                    <h4>تعديل الفئة</h4>
+                </div>
+
+                <div class="card-body">
+                    <form asp-action="EditTripProvider" asp-controller="Dashboard" method="post">
+                        <input type="hidden" name="Id" value="@Model.Id" />
+
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-label">الاسم</label>
+                                <input type="text" class="form-control" name="Name" value="@Model.Name" required />
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col text-center">
+                                <button class="btn btn-info" type="submit">حفظ البيانات</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

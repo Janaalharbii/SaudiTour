@@ -1,0 +1,158 @@
+@model List<Trip>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayouts.cshtml";
+}
+
+<div class="container" dir="rtl">
+    <div class="row mt-5">
+        <div class="col">
+            <div class="card">
+                <div class="card-header text-white" style="background-color: rgb(120, 43, 162);">
+                    <h4>إضافة بيانات الرحلة</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="AddTrip" method="post" enctype="multipart/form-data">
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label">اسم الرحلة</label>
+                                <input type="text" class="form-control" name="Name">
+                            </div>
+                            <div class="col">
+                                <label class="form-label">الوصف</label>
+                                <input type="text" class="form-control" name="Description">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label">الموقع</label>
+                                <input type="text" class="form-control" name="Location">
+                            </div>
+                            <div class="col">
+                                <label class="form-label">السعر</label>
+                                <input type="number" step="0.01" class="form-control" name="Price">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label">تاريخ البداية</label>
+                                <input type="date" class="form-control" name="StartDate">
+                            </div>
+                            <div class="col">
+                                <label class="form-label">تاريخ النهاية</label>
+                                <input type="date" class="form-control" name="EndDate">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label">تشمل الرحلة:</label>
+                                <div id="features-container">
+                                    <input type="text" name="Includes" class="form-control mb-2" placeholder="مثلاً: إفطار مجاني">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label">صورة الرحلة</label>
+                                <input type="file" name="ImageFile" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label">اختر نوع الرحلة</label>
+                                <select class="form-select" name="TripTypeId">
+                                    @foreach (var p in ViewBag.TripType)
+                                    {
+                                        <option value="@p.Id">@p.Name</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label class="form-label">اختر مقدم الرحلة</label>
+                                <select class="form-select" name="ProviderId">
+                                    @foreach (var p in ViewBag.tripProvider)
+                                    {
+                                        <option value="@p.Id">@p.Name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col text-center">
+                                <button class="btn btn-info" type="submit">حفظ البيانات</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="text-muted" />
+
+    <div class="row mt-5">
+        <div class="col">
+            <div class="card">
+                <div class="card-header text-white" style="background-color: rgb(120, 43, 162);">
+                    <h4>بيانات الرحلة</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table text-center">
+                        <thead>
+                            <tr>
+                                <th>رقم الرحلة</th>
+                                <th>اسم الرحلة</th>
+                                <th>الموقع</th>
+                                <th>الوصف</th>
+                                <th>تشمل</th>
+                                <th>السعر</th>
+                                <th>تاريخ البداية</th>
+                                <th>تاريخ النهاية</th>
+                                <th>الصورة</th>
+                                <th>مقدم الرحلة</th>
+                                <th>نوع الرحلة</th>
+                                <th colspan="2">إجراء</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.Location</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.Includes</td>
+                                    <td>@item.Price</td>
+                                    <td>@item.StartDate.ToShortDateString()</td>
+                                    <td>@item.EndDate.ToShortDateString()</td>
+                                    <td>
+                                        <img src="~/Images/@item.Image" alt="صورة" width="100" height="60" />
+                                    </td>
+                                    <td>@item.provider?.Name</td>
+                                    <td>@item.TripType?.Name</td>
+                                    <td>
+                                        <a asp-action="EditTrip" asp-route-id="@item.Id">
+                                            <i class="bi bi-pencil-fill text-success"></i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a asp-action="DeleteTrip" asp-route-id="@item.Id" onclick="return confirm('هل أنت متأكد من الحذف؟')">
+                                            <i class="bi bi-trash-fill text-danger"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+﻿@model SaudiTour.Trip
+
+@{
+    var includesList = Model.Includes?.Split('،', StringSplitOptions.RemoveEmptyEntries) ?? new string[0];
+}
+
+<div class="container">
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-12">
+            <div class="card custom-card">
+                <div class="row g-0">
+
+                    <!-- صورة الرحلة -->
+                    <div class="col-md-5 col-sm-12">
+                        <img class="img-fluid h-100 w-100 trip-img"
+                             src="/Images/@Model.Image"
+                             alt="@Model.Name"
+                             style="object-fit: cover; border-radius: 0.375rem 0 0 0.375rem;">
+                    </div>
+
+                    <!-- تفاصيل الرحلة -->
+                    <div class="col-md-7 col-sm-12">
+                        <div class="card-body">
+
+                            <!-- الموقع ونوع الرحلة -->
+                            <ul class="list-inline text-end p-2" dir="rtl">
+                                <li class="list-inline-item custom-list-item" ><span>@Model.Location</span></li>
+                                <li class="list-inline-item custom-list-item me-2"><span>@Model.TripType?.Name</span></li>
+                            </ul>
+
+                            <div class="card position-relative custom-card p-3 mb-3" dir="rtl">
+                            
+                              <span class="card-title text-end">@Model.Name</span>
+                           
+                                <div class="d-flex justify-content-between mt-2">
+                                    <small class="text-muted">
+                                        يبدأ من @(Model.StartDate.ToString("yyyy/MM/dd")) ، إلى @(Model.EndDate.ToString("yyyy/MM/dd"))
+                                    </small>
+                                    <strong class="text-dark"> @Model.Price ﷼</strong>
+                                </div>
+                            </div>
+
+                            <!-- الوصف -->
+                             <p class="text-end">
+                                <span class="text-secondary">بواسطة: </span>
+                                <span class="fw-bold">@Model.provider?.Name</span>
+                            </p>
+                            <p class="card-text text-end">@Model.Description</p>
+
+                            <!-- ما يشمله العرض -->
+                            <h6 class="mt-3 text-end">يشمل العرض:</h6>
+                            <ul class="list-unstyled custom-border text-end p-1" dir="rtl">
+                                @foreach (var include in includesList)
+                                {
+                                    <li class="mb-2">
+                                        <i class="bi bi-check2-circle me-1 custom-icon-color"></i> @include.Trim()
+                                    </li>
+                                }
+                            </ul>
+                    <div class="text-center mt-3">
+                        <form method="post" asp-controller="Home" asp-action="Payment" class="d-inline-block">
+                            <input type="hidden" name="id" value="@Model.Id" />
+                            <button type="submit" class="login-button">تأكيد الحجز</button>
+                        </form>
+                        
+                    </div>
+
+
+                        </div> <!-- card-body -->
+                    </div> <!-- col-md-7 -->
+
+                </div> <!-- row g-0 -->
+
+            </div> <!-- card -->
+        </div> <!-- col-md-8 -->
+    </div> <!-- row -->
+
+</div> <!-- container -->
